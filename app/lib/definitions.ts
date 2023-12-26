@@ -22,3 +22,14 @@ export type CategotyProps = {
 export type Provider = {
   children: React.ReactNode;
 };
+
+export type IOrder = {
+  id: string;
+  name: string;
+  price: number;
+  weight: number;
+  description: string;
+  image: string;
+  categoryId: number;
+  amount: number;
+};

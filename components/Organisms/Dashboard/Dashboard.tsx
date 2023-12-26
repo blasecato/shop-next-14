@@ -2,6 +2,7 @@
 import React from "react";
 import useMenuProducts from "@/hooks/useMenuProducts";
 import Product from "@/components/Atoms/Product/Product";
+import Header from "@/components/Organisms/Header/Header";
 import { IProduct } from "@/app/lib/definitions";
 
 const Dashboard = () => {
@@ -9,6 +10,7 @@ const Dashboard = () => {
 
   return (
     <>
+      <Header />
       <h1 className="text-4xl font-black">
         Categotia: {currentCategory?.name}
       </h1>

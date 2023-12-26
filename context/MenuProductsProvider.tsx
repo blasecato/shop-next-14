@@ -2,8 +2,9 @@
 
 import { useState, useEffect, createContext } from "react";
 import axios from "axios";
-import { ICategoty, IProduct } from "@/app/lib/definitions";
+import { ICategoty, IProduct, IOrder } from "@/app/lib/definitions";
 import { Provider } from "@/app/lib/definitions";
+import { toast } from "react-toastify";
 
 const MenuProsuctsContex = createContext({});
 
@@ -13,6 +14,7 @@ const MenuProsuctsProvider = ({ children }: Provider) => {
   const [productSelected, setProductSelected] = useState({});
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalPlacement] = useState("center");
+  const [listOrders, setListOrders] = useState<IOrder[]>([]);
 
   const getCategories = async () => {
     const { data } = await axios("./api/categories");
@@ -30,6 +32,21 @@ const MenuProsuctsProvider = ({ children }: Provider) => {
   const handleChangeModal = () => {
     setModalOpen(!isModalOpen);
   };
+
+  const handleAddOrder = (order: IOrder) => {
+    if (listOrders.some((orderState) => orderState.id === order.id)) {
+      const orderUpdate: any = listOrders.map((orderState) =>
+        orderState.id === order.id ? order : orderState
+      );
+      toast.success("Pedido editado");
+      setListOrders(orderUpdate);
+    } else {
+      setListOrders([...listOrders, order]);
+      toast.success("Agregado al pedido");
+    }
+    setProductSelected({});
+  };
+
   useEffect(() => {
     getCategories();
   }, []);
@@ -45,9 +62,11 @@ const MenuProsuctsProvider = ({ children }: Provider) => {
         productSelected,
         isModalOpen,
         modalPlacement,
+        listOrders,
         handleClickCategory,
         handleSelectProduct,
         handleChangeModal,
+        handleAddOrder,
       }}
     >
       {children}

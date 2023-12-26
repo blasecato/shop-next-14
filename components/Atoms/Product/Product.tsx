@@ -3,7 +3,6 @@ import Image from "next/image";
 import useMenuProducts from "@/hooks/useMenuProducts";
 import { formaterMoney } from "@/app/lib/utils";
 import ModalProduct from "../Modals/ModalProduct";
-
 interface Props {
   product: IProduct;
 }
@@ -30,7 +29,7 @@ const Product = ({ product }: Props) => {
       <div className="">
         <button
           type="button"
-          className="bg-amber-400 hover:bg-amber-500 w-full mt-5 p-3 uppercase font-bold"
+          className="button-primary"
           onClick={() => {
             handleSelectProduct(product);
             handleChangeModal();

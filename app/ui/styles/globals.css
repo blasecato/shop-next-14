@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  
+}
+.bg-overlay\/50 {
+  background-color: #81818107;
+  opacity: 0.3 !important;
+  backdrop-filter: blur(2px);
+}
+
+body {
+  background: #f4f6f0;
+
+}
+h1, h2, h3, h4, span, p {
+  color: #363021;
+}
+
+.scroll-none::-webkit-scrollbar {
+  width: 0px;
+}
+
+.scroll-none::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-none::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.scroll-none::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}
+
+.button-primary {
+  @apply bg-amber-400 w-full mt-5 p-3 uppercase font-bold
+}
+.button-primary:hover {
+  @apply bg-amber-500
+}

@@ -1,7 +1,9 @@
-import "./ui/globals.css";
+import "./ui/styles/globals.css";
 import { roboto } from "./ui/fonts";
 import Sidebar from "@/components/Organisms/Sidebar/Sidebar";
 import { Providers } from "./providers";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata = {
   title: "MoniCondimentos",
@@ -15,16 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body id="__next" className={`${roboto.className} antialiased`}>
+      <body className={`${roboto.className} antialiased`}>
         <Providers>
-          <div className="md:flex">
-            <aside className="md:w-4/12 xl:w-1/4 2xl:w-1/5">
-              <Sidebar />
-            </aside>
-            <main className="md:w-8/12 xl:w3/4 2xl:w4/5 h-screen overflow-y-scroll">
-              <div className="p-6">{children}</div>
-            </main>
-          </div>
+          <main>{children}</main>
+          <ToastContainer />
         </Providers>
       </body>
     </html>

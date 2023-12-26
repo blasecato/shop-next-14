@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Dashboard from "@/components/Organisms/Dashboard/Dashboard";
 
 export const metadata = {
   title: "Home - MoniCondimentos",
@@ -7,7 +8,7 @@ export const metadata = {
 export default function Home() {
   return (
     <Suspense fallback={<div className="">Cargando</div>}>
-      <div>Home</div>
+      <Dashboard />
     </Suspense>
   );
 }
